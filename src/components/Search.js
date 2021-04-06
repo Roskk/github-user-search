@@ -11,7 +11,7 @@ export const Search = () => {
 
   // Prevent request from going out on every keypress
   const handleChange = (e) => {
-    setIsLoading(true)
+    setIsLoading(true);
     const val = e.target.value;
     clearTimeout(timer);
     timer = setTimeout(() => {
@@ -20,7 +20,7 @@ export const Search = () => {
       } else {
         setSearchData([]);
       }
-    }, 300);
+    }, 800);
   };
 
   // Send call once user stops typing
@@ -29,15 +29,17 @@ export const Search = () => {
     httpClientWrapper({
       method: "get",
       url: url,
-    }).then((res) => {
-      setIsLoading(false)
-      setSearchData(res.data.items);
-      if (val && res.data.total_count === 0) {
-        setNoResults(true);
-      }
-    }).catch(err => {
-      alert('Oops, there was an error')
-    });
+    })
+      .then((res) => {
+        setIsLoading(false);
+        setSearchData(res.data.items);
+        if (val && res.data.total_count === 0) {
+          setNoResults(true);
+        }
+      })
+      .catch((err) => {
+        alert("Oops, there was an error");
+      });
   };
 
   return (

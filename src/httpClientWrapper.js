@@ -1,11 +1,13 @@
 import axios from "axios";
 
-export default ({ method, url, data }) => {
+const httpClientWrapper = ({ data, method, url }) => {
   return axios({
     data,
     method,
-    url
+    url,
   }).catch((err) => {
     console.log("Something went wrong", err);
   });
 };
+
+export default httpClientWrapper;

@@ -5,8 +5,8 @@ import styled from "styled-components";
 export const UserCard = ({ searchData }) => {
   return (
     <CardWrapper>
-      {searchData.map((user, i) => (
-        <Card>
+      {searchData.map((user) => (
+        <Card key={user.id}>
           <Avatar src={`${user.avatar_url}`} />
           <div>
             <UserName>{user.login}</UserName>

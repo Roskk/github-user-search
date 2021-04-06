@@ -12,13 +12,19 @@ export const UserDetails = ({ user }) => {
       method: "get",
       url: url,
     }).then((res) => {
-      console.log(res);
       setUserData(res.data);
       setShowDetails(!showDetails);
     });
   };
 
-  const { name, location, public_repos, email, updated_at, created_at } = userData;
+  const {
+    name,
+    location,
+    public_repos,
+    email,
+    updated_at,
+    created_at,
+  } = userData;
   return (
     <div>
       <DetailsButton onClick={handleClick}>
